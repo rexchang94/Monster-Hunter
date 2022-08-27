@@ -1,3 +1,7 @@
-/Users/rex/Desktop/programming/monster-hunter/src/main/java/com/capcom/mh/config/ModelMapperConfig.java
-/Users/rex/Desktop/programming/monster-hunter/src/main/java/com/capcom/mh/config/SwaggerConfig.java
-/Users/rex/Desktop/programming/monster-hunter/src/main/java/com/capcom/mh/MonsterHunterApplication.java
+/Users/rex/Desktop/programming/MonsterHunter_PROD/monster-hunter/src/main/java/com/capcom/mh/config/SwaggerConfig.java
+/Users/rex/Desktop/programming/MonsterHunter_PROD/monster-hunter/src/main/java/com/capcom/mh/entity/Elements.java
+/Users/rex/Desktop/programming/MonsterHunter_PROD/monster-hunter/src/main/java/com/capcom/mh/config/ModelMapperConfig.java
+/Users/rex/Desktop/programming/MonsterHunter_PROD/monster-hunter/src/main/java/com/capcom/mh/entity/Weakness.java
+/Users/rex/Desktop/programming/MonsterHunter_PROD/monster-hunter/src/main/java/com/capcom/mh/MonsterHunterApplication.java
+/Users/rex/Desktop/programming/MonsterHunter_PROD/monster-hunter/src/main/java/com/capcom/mh/controller/MonsterController.java
+/Users/rex/Desktop/programming/MonsterHunter_PROD/monster-hunter/src/main/java/com/capcom/mh/entity/Monsters.java

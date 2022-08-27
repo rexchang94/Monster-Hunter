@@ -37,6 +37,6 @@ out
 overridedb.*
 monster-hunter/target
 .flattened-pom.xml
-secrets.yml
+secrets.ymlｓ
 .gradletasknamecache
 .sts4-cache

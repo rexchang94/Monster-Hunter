@@ -15,8 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name= "ELEMENTS")
-public class Elements {
+@Table(name= "ELEMENT")
+public class Element {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +25,7 @@ public class Elements {
     @Column(name ="ELEMENT")
     private String element;
 
-    @OneToMany(mappedBy = "elements", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Weakness> weaknesses = new ArrayList<>();
 
 }

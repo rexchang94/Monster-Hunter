@@ -24,11 +24,11 @@ public class Weakness {
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     @JoinColumn(name="MONSTER_ID")
-    private Monsters monsters;
+    private Monster monster;
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     @JoinColumn(name="WEAKNESS_ID")
-    private Elements elements;
+    private Element element;
 
 
 

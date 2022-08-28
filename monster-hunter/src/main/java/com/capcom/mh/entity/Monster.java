@@ -5,15 +5,14 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "MONSTERS")
-public class Monsters {
+@Table(name = "MONSTER")
+public class Monster {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,7 +36,7 @@ public class Monsters {
     @Column(name = "DANGER")
     private Integer Danger;
 
-    @OneToMany(mappedBy = "monsters", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "monster", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Weakness> weaknesses = new ArrayList<>();
 
 }

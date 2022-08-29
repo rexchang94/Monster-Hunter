@@ -3,6 +3,7 @@ package com.capcom.mh.controller;
 import com.capcom.mh.entity.Element;
 import com.capcom.mh.service.ElementsService;
 import io.swagger.annotations.Api;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class ElementController {
     ElementsService elementsService;
 
     @PostMapping(value = "")
-    public ResponseEntity<Element> createElement(@RequestBody Element element){
+    public ResponseEntity<Element> createElement(@RequestBody Element element) {
         if(element.getId() == null){
             return ResponseEntity.badRequest().build();
         }
@@ -25,6 +26,16 @@ public class ElementController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(createdElement);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Element> findElementById(@PathVariable Long id) throws Exception {
+        if(id == null) {
+            ResponseEntity.badRequest().build();
+        }
+        Element elements = elementsService.findById(id);
+
+        return ResponseEntity.ok(elements);
     }
 
 }

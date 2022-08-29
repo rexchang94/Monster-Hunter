@@ -27,7 +27,7 @@ public class Weakness {
     private Monster monster;
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-    @JoinColumn(name="WEAKNESS_ID")
+    @JoinColumn(name="ELEMENT_ID")
     private Element element;
 
 

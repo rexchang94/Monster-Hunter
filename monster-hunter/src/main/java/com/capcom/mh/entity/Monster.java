@@ -39,6 +39,7 @@ public class Monster {
     @OneToMany(mappedBy = "monster", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Weakness> weaknesses = new ArrayList<>();
 
+
 }
 
 

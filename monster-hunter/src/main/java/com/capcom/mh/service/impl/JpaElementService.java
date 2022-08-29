@@ -2,7 +2,7 @@ package com.capcom.mh.service.impl;
 
 import com.capcom.mh.entity.Element;
 import com.capcom.mh.exception.ResourceNotFoundException;
-import com.capcom.mh.model.ElementRepository;
+import com.capcom.mh.repository.ElementRepository;
 import com.capcom.mh.service.ElementsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

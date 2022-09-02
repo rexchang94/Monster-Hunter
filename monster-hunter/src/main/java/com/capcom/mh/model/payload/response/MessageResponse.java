@@ -1,4 +1,4 @@
-package com.capcom.mh.payload.response;
+package com.capcom.mh.model.payload.response;
 
 public class MessageResponse {
 

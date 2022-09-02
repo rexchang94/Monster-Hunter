@@ -1,6 +1,5 @@
 package com.capcom.mh.entity;
 
-import com.capcom.mh.model.ERole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ROLES")
 public class Role {
+    public enum ERole {ROLE_USER, ROLE_ADMIN;}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

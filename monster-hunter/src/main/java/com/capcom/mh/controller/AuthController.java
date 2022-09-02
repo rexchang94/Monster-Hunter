@@ -2,15 +2,15 @@ package com.capcom.mh.controller;
 
 import com.capcom.mh.entity.Role;
 import com.capcom.mh.entity.User;
-import com.capcom.mh.model.ERole;
-import com.capcom.mh.payload.request.LoginRequest;
-import com.capcom.mh.payload.request.SignupRequest;
-import com.capcom.mh.payload.response.JwtResponse;
-import com.capcom.mh.payload.response.MessageResponse;
+import com.capcom.mh.model.payload.request.LoginRequest;
+import com.capcom.mh.model.payload.request.SignupRequest;
+import com.capcom.mh.model.payload.response.JwtResponse;
+import com.capcom.mh.model.payload.response.MessageResponse;
 import com.capcom.mh.repository.RoleRepository;
 import com.capcom.mh.repository.UserRepository;
 import com.capcom.mh.security.jwt.JwtUtils;
 import com.capcom.mh.security.service.UserDetailsImpl;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
+@Api("Auth's controller")
 public class AuthController {
     @Autowired
    private AuthenticationManager authenticationManager;
@@ -43,9 +44,9 @@ public class AuthController {
     private PasswordEncoder encoder;
 
     @Autowired
-    JwtUtils jwtUtils;
+    private JwtUtils jwtUtils;
 
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
@@ -72,8 +73,6 @@ public class AuthController {
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
-
-
         // Create new user's account
         User user = new User(signUpRequest.getUsername(),
                 encoder.encode(signUpRequest.getPassword()));
@@ -82,14 +81,14 @@ public class AuthController {
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
-            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+            Role userRole = roleRepository.findByName(Role.ERole.ROLE_ADMIN)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
-                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+                        Role adminRole = roleRepository.findByName(Role.ERole.ROLE_ADMIN)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(adminRole);
 
@@ -101,7 +100,7 @@ public class AuthController {
 //
 //                        break;
                     default:
-                        Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                        Role userRole = roleRepository.findByName(Role.ERole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(userRole);
                 }

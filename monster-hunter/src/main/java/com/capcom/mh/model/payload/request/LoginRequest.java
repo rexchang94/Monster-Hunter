@@ -1,4 +1,4 @@
-package com.capcom.mh.payload.request;
+package com.capcom.mh.model.payload.request;
 
 import javax.validation.constraints.NotBlank;
 

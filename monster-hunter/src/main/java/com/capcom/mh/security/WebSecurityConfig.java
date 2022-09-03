@@ -54,26 +54,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
                 .anyRequest()
                 .authenticated().and()
                 .formLogin()
                 .defaultSuccessUrl("/swagger-ui.html").and()
-                .httpBasic();
+                .httpBasic().authenticationEntryPoint(unauthorizedHandler);
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/v2/api-docs",
-//                "/configuration/ui",
-//                "/swagger-resources/**",
-//                "/configuration/security",
-//                "/swagger-ui.html",
-//                "/webjars/**");
-//    }
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/v2/api-docs",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/webjars/**");
+    }
 
 }

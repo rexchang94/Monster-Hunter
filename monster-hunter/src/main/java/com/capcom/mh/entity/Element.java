@@ -15,18 +15,24 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name= "ELEMENT")
+@Table(name= "ELEMENTS")
 public class Element {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
     @Column(name ="ELEMENT")
     private String element;
 
-    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Weakness> weaknesses = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "WEAKNESS_ID", referencedColumnName = "id")
+    private Weakness weakness;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="WEAPON_ID")
+    private Weapon weapon;
 
 }
 

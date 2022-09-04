@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="WEAKNESS")
+@Table(name="WEAKNESSES")
 public class Weakness {
 
     @Id
@@ -26,8 +26,7 @@ public class Weakness {
     @JoinColumn(name="MONSTER_ID")
     private Monster monster;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-    @JoinColumn(name="ELEMENT_ID")
+    @OneToOne(mappedBy = "weakness")
     private Element element;
 
 

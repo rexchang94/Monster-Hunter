@@ -20,11 +20,11 @@ public class WeaponElement {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name = "weapon_id")
     private Weapon weapon;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name = "element_id")
     private Element element;
 

@@ -1,11 +1,13 @@
 package com.capcom.mh.entity;
 
+import com.capcom.mh.validation.ListValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,16 +25,15 @@ public class Element {
     @Column(name = "id")
     private Long id;
 
-    @Column(name ="ELEMENT")
-    private String element;
+    @Column
+    @ListValue({"fire","water","ice","thunder","dragon"})
+    private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "WEAKNESS_ID", referencedColumnName = "id")
-    private Weakness weakness;
+    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Weakness> weaknesses;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="WEAPON_ID")
-    private Weapon weapon;
+    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<WeaponElement> weaponElements;
 
 }
 

@@ -8,4 +8,6 @@ public interface ElementsService {
     Element create(Element element);
 
     Element findById(Long id) throws Exception;
+
+    Element findByName(String name);
 }

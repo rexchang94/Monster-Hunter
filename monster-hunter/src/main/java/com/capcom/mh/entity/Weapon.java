@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,21 +23,26 @@ public class Weapon {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "weapon", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Element> elements = new ArrayList<>();
+    @OneToMany(mappedBy = "weapon", cascade = CascadeType.PERSIST)
+    private List<WeaponElement> weaponElements;
 
     @Column(name="NAME")
+    @NotNull
     private String name;
 
     @Column(name="SLUG")
+    @NotNull
     private String slug;
 
     @Column(name="TYPE")
+    @NotNull
     private String type;
 
     @Column(name="RANK")
+    @NotNull
     private Integer rank;
 
     @Column(name="IS_CLOSE_WEAPON")
+    @NotNull
     private Boolean isCloseWeapon;
 }

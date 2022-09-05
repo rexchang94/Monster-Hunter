@@ -26,9 +26,7 @@ public class Weakness {
     @JoinColumn(name="MONSTER_ID")
     private Monster monster;
 
-    @OneToOne(mappedBy = "weakness")
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @JoinColumn(name="ELEMENT_ID")
     private Element element;
-
-
-
 }

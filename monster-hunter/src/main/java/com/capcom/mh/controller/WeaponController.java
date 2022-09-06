@@ -17,20 +17,10 @@ public class WeaponController {
 
     @PostMapping(value = "")
     public ResponseEntity<Weapon> createWeapon(@RequestBody Weapon weapon) {
-//        if(weapon.getId() == null){
-//            return ResponseEntity.badRequest().build();
-//        }
         Weapon createdWeapon = weaponService.create(weapon);
         if(createdWeapon == null){
             return ResponseEntity.notFound().build();
         }
-        System.out.println(weapon.getName());
-        System.out.println(weapon.getSlug());
-        System.out.println(weapon.getType());
-        System.out.println(weapon.getRank());
-        System.out.println(weapon.getIsCloseWeapon());
-        System.out.println(weapon.getWeaponElements().get(0).getValue());
-        System.out.println(weapon.getWeaponElements().get(0).getElement().getName());
         return ResponseEntity.ok(weapon);
     }
 

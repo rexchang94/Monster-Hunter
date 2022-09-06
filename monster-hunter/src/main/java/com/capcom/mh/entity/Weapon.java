@@ -1,6 +1,5 @@
 package com.capcom.mh.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -21,9 +19,10 @@ public class Weapon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
-    @OneToMany(mappedBy = "weapon", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "weapon", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<WeaponElement> weaponElements;
 
     @Column(name="NAME")

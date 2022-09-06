@@ -1,5 +1,6 @@
 package com.capcom.mh.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,10 +19,12 @@ public class WeaponElement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name = "weapon_id")
+    @JoinColumn(name = "weapon_id", referencedColumnName = "id")
+    @JsonIgnore
     private Weapon weapon;
 
     @ManyToOne(cascade=CascadeType.PERSIST)

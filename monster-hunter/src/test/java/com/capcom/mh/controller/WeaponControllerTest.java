@@ -17,9 +17,9 @@ public class WeaponControllerTest {
     @Autowired
     MockMvc mockMVvc;
 
-//    @Before
-//    public void setup() throws JsonProcessingException {
-//    }
+    @Before
+    public void setup() throws JsonProcessingException {
+    }
 
 //    @Test
 //    @WithMockUser

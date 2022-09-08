@@ -18,9 +18,6 @@ public class ElementController {
 
     @PostMapping(value = "")
     public ResponseEntity<Element> createElement(@RequestBody Element element) {
-        if(element.getId() == null){
-            return ResponseEntity.badRequest().build();
-        }
         Element createdElement = elementsService.create(element);
         if(createdElement == null){
             return ResponseEntity.notFound().build();

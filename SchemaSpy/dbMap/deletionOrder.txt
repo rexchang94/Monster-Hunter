@@ -1,3 +1,8 @@
-weakness
+weapon_elements
+weaknesses
+user_roles
+weapons
+users
+roles
 monsters
 elements

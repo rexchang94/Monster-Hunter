@@ -35,10 +35,10 @@ public class ReadDbPropertiesProcessor implements EnvironmentPostProcessor {
                 .driverClassName(environment.getProperty("spring.datasource.driver-class-name")).build();
         try {
             connection = ds.getConnection();
-            preparedStatement = connection.prepareStatement("SELECT property_key, property_value from criteria_configs");
+            preparedStatement = connection.prepareStatement("select property_key, property_value from criteria_configs");
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                propertySource.put(rs.getString("PROPERTY_KEY"), rs.getString("PROPERTY_VALUE"));
+                propertySource.put(rs.getString("property_key"), rs.getString("property_value"));
             }
             System.out.println("criteriaConfigProperties = " + propertySource);
 
